@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdminLte</title>
+    <link rel="icon" href="../static/Images/Gzlogo.jpg" type="icon">
+    <link rel="stylesheet" href="../static/css/admin.css" type="text/css">
+    <link rel="stylesheet" href="../static/css/shop.css" type="text/css">
+</head>
+<body class="body"> 
+    {% load static%}
+    <div>
+        <ul>
+            <li id="ele"><a href="#"><img src="{% static '/Images/Gzlogo.jpg'%}" alt="logo" width="50px" height="30px"></a></li>
+            <li><a href="\">Home</a></li>
+            <li><a href="">Contact Us</a></li>
+            <li><a href="">Help</a></li>
+            <li id="">
+                {% if user.is_authenticated %}
+                <a href="\logout">Logout</a>
+                {% else %}
+                <a href="\login">Login</a>
+                {% endif %}
+              <li id=""><a href="\signup">Sign Up</a></li>
+              <li id=""><a href="\shop">Shop</a></li>
+
+
+        </ul>
+    </div>
+    <div class="main">
+        <h1>Products Upload</h1>
+        <form action=" " method="post" enctype="multipart/form-data" class="main1">
+            {% csrf_token%}
+            
+            <input type="number" placeholder="ProductId" name="prod_id" id="prod_id" required><br>
+            <input type="text" placeholder="Product Name" name="prod_n" id="prod_n" required><br>
+            <input type="text" placeholder="Product Title" name="prod_t" id="prod_t" required><br>
+            <textarea name="description" id="description" placeholder="Description" required></textarea><br>
+            <input type="number" placeholder="MRP" name="prod_p" id="prod_p" required><br>
+            <input type="number" placeholder="DISCOUNT" name="prod_d" id="prod_d" required><br>
+            <input type="file" name="image" accept="image/*" id="image" class="upload" required><br>
+            <input type="datetime-local" name="prod_c" required id="date" required> <br>
+            <button type="submit">Submit</button>
+            
+        </form>
+    </div>
+</body>
+</html>
